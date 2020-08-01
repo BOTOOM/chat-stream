@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "chatStream"
+    }
+  },
+  "defaultProject": "chatStream",
+  "cli": {
+    "analytics": "86a31295-a2fd-40a4-bd57-25ff827af307"
+  }
 }
