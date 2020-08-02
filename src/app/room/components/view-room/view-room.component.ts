@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewRoomComponent implements OnInit {
 
+  video = '-ci7EwXaIJg';
+
   constructor() { }
 
   ngOnInit(): void {
