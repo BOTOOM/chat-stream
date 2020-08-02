@@ -5,6 +5,7 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 import { SharedRoutingModule } from './shared-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -21,6 +22,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {}};
     CommonModule,
     MatToolbarModule,
     MatButtonModule,
+    MatIconModule,
     SharedRoutingModule,
     SocketIoModule.forRoot(config)
   ],

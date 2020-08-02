@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
+import { HomeComponent } from './shared/components/home/home.component';
 
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: '',
-    pathMatch: 'full'
+    path: 'home',
+    component: HomeComponent,
   },
   {
     path: 'room',
@@ -14,18 +14,18 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
 ];
 
 const config: ExtraOptions = {
-  useHash: true,
+  useHash: false,
 };
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, config)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
