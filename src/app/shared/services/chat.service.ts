@@ -15,6 +15,10 @@ export class ChatService {
     this.socket.emit('chat', message);
   }
 
+  newUser(name: string) {
+    this.socket.emit('new user', name);
+  }
+
   // tslint:disable-next-line: typedef
   receiveChat() {
     return this.socket.fromEvent('chat');
@@ -23,5 +27,8 @@ export class ChatService {
   // tslint:disable-next-line: typedef
   getUsers() {
     return this.socket.fromEvent('users');
+  }
+  getListUsers() {
+    return this.socket.fromEvent('List Users');
   }
 }
