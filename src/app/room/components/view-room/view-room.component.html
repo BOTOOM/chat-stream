@@ -4,7 +4,7 @@
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
     </div>
-    <div class=" p-0 m-0 col-lg-4 col-md-5 col-sm-12"> 
+    <div class=" p-0 m-0 col-lg-4 col-md-5 col-sm-12">
         <mat-tab-group mat-align-tabs="center">
             <mat-tab label="Chat">
                 <mat-card class="example-card">
@@ -14,34 +14,34 @@
 
                         <div class="row">
                             <mat-list role="list">
-                                <mat-list-item role="listitem">Item 1</mat-list-item>
-                                <mat-list-item role="listitem">Item 2</mat-list-item>
-                                <mat-list-item role="listitem">Item 3</mat-list-item>
-                              </mat-list>
-                              
+                                <mat-list-item *ngFor="let message of messages" role="listitem">{{message}}
+                                </mat-list-item>
+                            </mat-list>
+
                         </div>
 
                         <div class="row">
-                            <div class="col-10 m-0 p-0" style="width: 100%;">
-                                <mat-form-field style="width: 100%;"  class="example-full-width">
-                                    <mat-label>Address 2</mat-label>
-                                    <textarea matInput ></textarea>
-                                  </mat-form-field>
+                            <div class="col-10 m-0 p-0 col-12" style="width: 100%;">
+                                <mat-form-field style="width: 100%;" class="example-full-width">
+                                    <mat-label>Escribe tu mensaje ...</mat-label>
+                                    <textarea matInput [(ngModel)]="message" (keyup.enter)="addChat()"></textarea>
+                                </mat-form-field>
                             </div>
                             <div class="col-2 m-0 p-0">
-                                    <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
-                                      <mat-icon>send</mat-icon>
-                                    </button>
+                                <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon"
+                                    (click)="addChat()">
+                                    <mat-icon>send</mat-icon>
+                                </button>
                             </div>
                         </div>
                     </mat-card-content>
-                    
-                  </mat-card>
-                  
+
+                </mat-card>
+
 
 
             </mat-tab>
-            <mat-tab label="Conectados">Conectados</mat-tab>
+            <mat-tab label="Conectados">Conectados {{ users }}</mat-tab>
         </mat-tab-group>
     </div>
 

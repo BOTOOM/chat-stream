@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+// import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule} from '@angular/forms';
+
+// import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
@@ -13,10 +17,14 @@ import { ViewRoomComponent } from './components/view-room/view-room.component';
 import { SharedModule } from '../shared/shared.module';
 
 
+// const config: SocketIoConfig = { url: 'http://localhost:3000', options: {}};
+
 @NgModule({
   declarations: [ViewRoomComponent],
   imports: [
+    // BrowserModule,
     CommonModule,
+    FormsModule,
     MatTabsModule,
     MatCardModule,
     MatInputModule,
@@ -24,7 +32,8 @@ import { SharedModule } from '../shared/shared.module';
     MatButtonModule,
     MatListModule,
     SharedModule,
-    RoomRoutingModule
+    RoomRoutingModule,
+    // SocketIoModule.forRoot(config)
   ]
 })
 export class RoomModule { }
