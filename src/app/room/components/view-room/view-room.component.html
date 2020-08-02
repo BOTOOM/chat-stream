@@ -7,47 +7,30 @@
     <div class=" p-0 m-0 col-lg-4 col-md-5 col-sm-12 ">
         <mat-tab-group mat-align-tabs="center">
             <mat-tab label="Chat" style="width: 100%;">
-                <mat-card class="example-card col-12 .align-bottom" style="width: 100%;">
-                    <mat-card-header>
-                    </mat-card-header>
-                    <mat-card-content style="width: 100%;">
+                <app-chat></app-chat>
 
-                        <div class="row">
-                            <mat-list role="list">
-                                <mat-list-item *ngFor="let message of messages" role="listitem">
-                                    <div class="row ">
-                                        <div class="col-5 pb-1 pt-1 d-flex" style="justify-content: left;">
-                                            <div style="justify-content: left;"><strong>{{ message.UserName }} </strong>
-                                            </div>
-                                        </div>
-                                        <div class="col-7 pr-0 pb-1 pt-1 d-flex justify-content-end" style="justify-content: right;">
-                                            <div class="d-flex justify-content-end" style="justify-content: right; width: 100%;" class="pr-0"> {{message.Mensaje}}</div>
-                                        </div>
-                                    </div>
+<!-- <nb-layout>
+    <nb-layout-column>
+        <nb-chat title="" size="medium">
+            <nb-chat-message *ngFor="let msg of messagesNB"
+                             [type]="msg.type"
+                             [message]="msg.text"
+                             [reply]="msg.reply"
+                             [sender]="msg.user.name"
+                             [date]="msg.date"
+                             [files]="msg.files"
+                             [quote]="msg.quote"
+                             [latitude]="msg.latitude"
+                             [longitude]="msg.longitude"
+                             [avatar]="msg.user.avatar">
+            </nb-chat-message>
+            <nb-chat-form (send)="sendMessage($event)" [dropFiles]="false">
+            </nb-chat-form>
+          </nb-chat>
+    </nb-layout-column>
+    
+</nb-layout> -->
 
-                                </mat-list-item>
-                            </mat-list>
-
-                        </div>
-
-                        <div class="row">
-                            <div class="col-10 m-0 p-0" style="width: 90%;">
-                                <mat-form-field style="width: 100%;" class="example-full-width">
-                                    <mat-label>Escribe tu mensaje ...</mat-label>
-                                    <textarea matInput [(ngModel)]="message.Mensaje"
-                                        (keyup.enter)="addChat()"></textarea>
-                                </mat-form-field>
-                            </div>
-                            <div class="col-2 m-0 p-0">
-                                <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon"
-                                    (click)="addChat()">
-                                    <mat-icon>send</mat-icon>
-                                </button>
-                            </div>
-                        </div>
-                    </mat-card-content>
-
-                </mat-card>
 
 
 

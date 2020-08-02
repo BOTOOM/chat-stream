@@ -12,15 +12,19 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 
+import { NbThemeModule, NbLayoutModule, NbChatModule } from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
+
 import { RoomRoutingModule } from './room-routing.module';
 import { ViewRoomComponent } from './components/view-room/view-room.component';
 import { SharedModule } from '../shared/shared.module';
+import { CharComponent } from './components/char/char.component';
 
 
 // const config: SocketIoConfig = { url: 'http://localhost:3000', options: {}};
 
 @NgModule({
-  declarations: [ViewRoomComponent],
+  declarations: [ViewRoomComponent, CharComponent],
   imports: [
     // BrowserModule,
     CommonModule,
@@ -33,6 +37,10 @@ import { SharedModule } from '../shared/shared.module';
     MatListModule,
     SharedModule,
     RoomRoutingModule,
+    NbThemeModule.forRoot({ name: 'default' }),
+    NbLayoutModule,
+    NbEvaIconsModule,
+    NbChatModule,
     // SocketIoModule.forRoot(config)
   ]
 })
