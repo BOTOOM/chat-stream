@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class ViewRoomComponent implements OnInit {
 
-  users: number = 0;
+  users = 0;
   message: Mensaje;
   messages: Mensaje[] = [];
   UserData: any;
@@ -24,7 +24,7 @@ export class ViewRoomComponent implements OnInit {
     private authService: AuthService,
   ) {
     this.listUser = [];
-    this.message= {
+    this.message = {
       Mensaje : '',
       UserName: ''
     };
@@ -37,14 +37,17 @@ export class ViewRoomComponent implements OnInit {
 
     }, (error) => { console.log('error:', error); } );
 
+    this.chatService.receiveOldMessages().subscribe( oldMessges => {
+      const old = oldMessges as any[];
+      // tslint:disable-next-line: prefer-for-of
+      for (let i = 0; i < old.length; i++) {
+        this.messages.push(oldMessges[i] as Mensaje );
+      }
+    } );
+
     this.chatService.receiveChat().subscribe((message) => {
       this.messages.push( message as Mensaje );
     });
-
-    // this.chatService.getUsers().subscribe((users: number) => {
-    //   this.users = users;
-    // });
-
     this.chatService.getListUsers().subscribe((Listusers: any) => {
       this.listUser = Listusers;
     });
@@ -59,7 +62,6 @@ export class ViewRoomComponent implements OnInit {
     this.chatService.sendChat(objMenssage);
     this.message.Mensaje = '';
   }
-
 }
 
 interface Mensaje {

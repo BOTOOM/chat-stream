@@ -24,6 +24,10 @@ export class ChatService {
     return this.socket.fromEvent('chat');
   }
 
+  receiveOldMessages() {
+    return this.socket.fromEvent('old messages');
+  }
+
   // tslint:disable-next-line: typedef
   getUsers() {
     return this.socket.fromEvent('users');
