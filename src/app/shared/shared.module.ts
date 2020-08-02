@@ -14,7 +14,7 @@ import { DomseguroPipe } from './pipes/domseguro.pipe';
 import { HomeComponent } from './components/home/home.component';
 
 
-const config: SocketIoConfig = { url: 'http://13.59.137.239:3000', options: {}};
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {}};
 
 @NgModule({
   declarations: [NavbarComponent, FooterComponent, DomseguroPipe, HomeComponent],
