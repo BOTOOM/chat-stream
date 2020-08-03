@@ -11,6 +11,7 @@ export class CharComponent implements OnInit {
 
   UserData: any;
   messagesNB: any[];
+  mensajesViejos = false;
 
 
   constructor(
@@ -24,24 +25,26 @@ export class CharComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getUser$().subscribe( data => {
       this.UserData = data;
-      console.log(this.UserData);
       this.chatService.newUser(this.UserData.name);
 
     }, (error) => { console.log('error:', error); } );
 
     this.chatService.receiveOldMessages().subscribe( oldMessges => {
       const old = oldMessges as Mensaje[];
+      if (!this.mensajesViejos) {
       // tslint:disable-next-line: prefer-for-of
-      for (let i = 0; i < old.length; i++) {
-        this.messagesNB.push({
-          text: old[i].Mensaje,
-          date: old[i].creado_en,
-          reply: false,
-          user: {
-            name: old[i].UserName,
-            avatar: old[i].pictureUser,
-          },
-        });
+        for (let i = 0; i < old.length; i++) {
+          this.messagesNB.push({
+            text: old[i].Mensaje,
+            date: old[i].creado_en,
+            reply: false,
+            user: {
+              name: old[i].UserName,
+              avatar: old[i].pictureUser,
+            },
+          });
+        }
+        this.mensajesViejos = true;
       }
     } );
 
@@ -76,7 +79,6 @@ export class CharComponent implements OnInit {
         avatar: objMenssage.pictureUser,
       },
     });
-    console.log(this.messagesNB);
     this.chatService.sendChat(objMenssage);
 
   }
